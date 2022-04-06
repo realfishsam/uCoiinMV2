@@ -1,0 +1,46 @@
+.home-container {
+    width: fit-content(25px);
+    max-height: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #000f14;
+  }
+.paddiv {
+    width: 100%;
+    max-height: fit-content;
+    display: flex;
+    overflow: auto;
+    align-items: center;
+    flex-direction: column;
+    background-color: #000f14;
+    padding-bottom: 10px;
+  }
+  .nopaddiv {
+    flex: 0 0 auto;
+    width: 100%;
+    max-height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #thrid {
+    padding-bottom: 25px;
+  }
+  #withdraw {
+      height: 50px;
+  }
+  .white-text {
+    color: #ffffff;
+  }
+  @media(max-width: 500px) {
+    .home-button {
+      color: #ffffff;
+      width: 172px;
+      padding: 0px;
+      align-self: center;
+      text-align: center;
+      background-color: #000f14;
+    }
+  }
