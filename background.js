@@ -9,10 +9,8 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onMessageExternal.addListener(
   function(request, sender, sendResponse) {
     usr = request;
-    console.log(usr)
 
-    if (request.id_token === undefined) { // this is a facebook user
-      // This should store usr json in users local and synced storage so in miner we can set username.
+    if (usr.id.length <= 128) { // this is a facebook user
       console.log("Facebook Client")
       
       chrome.storage.local.set(
@@ -20,6 +18,7 @@ chrome.runtime.onMessageExternal.addListener(
           name: request.name,
           thr: 1
         },
+        
          function() {
         console.log("User Stored")
       });
@@ -27,13 +26,27 @@ chrome.runtime.onMessageExternal.addListener(
       return;
     }
 
-    if (request.id_token != undefined) { // this is a google user
+    if (usr.id.length > 128) { // this is a google user
       console.log("Google Client")
-      /*
-      chrome.storage.local.set(usr, function() {
+      id = request.id;
+      if (id.length > 128) {
+        id = id.slice(0, 128);
+      }
+      else {
+        id = request.id;
+      };
+      id = id.replace(".", "");
+
+      chrome.storage.local.set(
+        { id: id,
+          name: request.name,
+          thr: 1
+        },
+        
+         function() {
         console.log("User Stored")
       });
-      */
+
       return;
     }
   });
