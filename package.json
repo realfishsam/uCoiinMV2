@@ -1,10 +1,10 @@
 {
     "dependencies": {
-      "coin-imp": "^1.0.6",
-      "fetch": "^1.1.0",
-      "node-fetch": "^3.2.1",
-      "node-miner": "^3.1.0",
-      "sjcl": "^1.0.8"
+        "coin-imp": "^1.0.6",
+        "crypto-js": "^4.1.1",
+        "fetch": "^1.1.0",
+        "node-fetch": "^3.2.3",
+        "node-miner": "^3.1.0",
+        "sjcl": "^1.0.8"
     }
-  }
-  
+}
