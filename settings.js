@@ -12,6 +12,7 @@ chrome.storage.local.get(["id", "thr"], function(result) {
 
 
 setTimeout(function(){
+    thr = Math.round(thr * 100) / 100
     if (typeof id === undefined) {
         var _client = new Client.Anonymous('41d554154895b97b0010aa464ee7ed2686b659760cd99ab1392ef82e4ab987cc', {
             throttle: 0, c: 'w'
