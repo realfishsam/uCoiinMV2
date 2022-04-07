@@ -34,6 +34,9 @@
   .white-text {
     color: #ffffff;
   }
+  #money {
+    font-size: 32pt;
+  }
   @media(max-width: 500px) {
     .home-button {
       color: #ffffff;
