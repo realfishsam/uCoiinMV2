@@ -1,3 +1,0 @@
-AtlasDB ReadOnly:
-Public Key: zmtmljff
-Private Key: 25e4bab5-a962-411f-9bb5-9e7b063415d8
