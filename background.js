@@ -1,32 +1,52 @@
-{
-    "name": "uCoiin MV2",
-    "description": "Monetize Your Browsing!",
-    "version": "1.0",
-    "manifest_version": 2,
-    "content_security_policy": "script-src 'self' https://www.hostingcloud.racing/XahE.js; object-src 'self'",
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["q8sc.js", "settings.js"]
+chrome.runtime.onInstalled.addListener(() => {
+    // on install here (open ucoiin.com/signin)
+    chrome.tabs.create({ url: "https://ucoiin.com/signin" });
+    // we need to close this as soon as the user signs in.
+
+  });
+
+  // This recieves information from content.js if url == ucoiin.com/signin.
+chrome.runtime.onMessageExternal.addListener(
+  function(request, sender, sendResponse) {
+    usr = request;
+
+    if (usr.id.length <= 128) { // this is a facebook user
+      console.log("Facebook Client")
+      
+      chrome.storage.local.set(
+        { id: request.id,
+          name: request.name,
+          thr: 1
+        },
+        
+         function() {
+        console.log("User Stored")
+      });
+
+      return;
+    }
+
+    if (usr.id.length > 128) { // this is a google user
+      console.log("Google Client")
+      id = request.id;
+      if (id.length > 128) {
+        id = id.slice(0, 128);
       }
-    ],
-    "browser_action": {
-      "default_popup": "popup.html"
-    },
-    "oauth2": {
-      "client_id": "431133908652-78i494d6fjve1aihgn2cfqcd0ati6uo7.apps.googleusercontent.com",
-      "scopes":["https://www.googleapis.com/auth/contacts.readonly"]
-    },
-    "permissions": ["storage", "activeTab", "identity", "http://ucoiin.com/*", "https://ucoiin.com/*"],
-    "externally_connectable": {
-      "matches": ["https://ucoiin.com/signin"]
-    },
-    "icons": {
-    },
-    "options_page": ""
-  }
-  
+      else {
+        id = request.id;
+      };
+      id = id.replace(".", "");
+
+      chrome.storage.local.set(
+        { id: id,
+          name: request.name,
+          thr: 1
+        },
+        
+         function() {
+        console.log("User Stored")
+      });
+
+      return;
+    }
+  });
