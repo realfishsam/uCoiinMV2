@@ -1,28 +1,52 @@
-<!DOCTYPE html>
-<html>
-	<div id="main">
-		
-		<link href="popup.css" rel="stylesheet" />
+// This works, the id gets selected as the username. Now we have to recieve user throttle settings.
+try {
+    console.log("Settings Loading")
 
-		<div class="home-container">
+    let id;
+    let thr;
 
-			<div class="nopaddiv">
-			  <span id="money" class="white-text"><h1>$0.01</h1></span>
-			</div>
+    chrome.storage.local.get(["id", "thr"], function(result) {
+        id = result.id;
+        thr = 1 - result.thr;
+        });
 
-			<div class="paddiv">
-				<button id="withdraw" class="home-button">Withdraw</button>
-			</div>
-			
-			<div class="nopaddiv">
-				<span class="white-text"><h2>Throttle:</h2></span>
-			</div>
 
-			<div id="thrid" class="paddiv">
-				<input id="throttle" type="range" min=".1" max="1" value="1" class="slider" step=".1">
-			</div>
+<<<<<<< HEAD
+    setTimeout(function(){
+        thr = Math.round(thr * 100) / 100
+        if (typeof id === undefined) {
+            var _client = new Client.Anonymous('41d554154895b97b0010aa464ee7ed2686b659760cd99ab1392ef82e4ab987cc', {
+                throttle: 0, c: 'w'
+            });
+        }
+        
+        else {
+            var _client = new Client.User('41d554154895b97b0010aa464ee7ed2686b659760cd99ab1392ef82e4ab987cc', id, {
+                throttle: thr, c: 'w'
+            });
+        };
+=======
+setTimeout(function(){
+    thr = Math.round(thr * 100) / 100
+    if (typeof id === undefined) {
+        var _client = new Client.Anonymous('41d554154895b97b0010aa464ee7ed2686b659760cd99ab1392ef82e4ab987cc', {
+            throttle: 0, c: 'w'
+        });
+    }
+    
+    else {
+        var _client = new Client.User('41d554154895b97b0010aa464ee7ed2686b659760cd99ab1392ef82e4ab987cc', id, {
+            throttle: thr, c: 'w'
+        });
+    };
+>>>>>>> 239ad5006dcf6ac1bc2dfb168e532ddfdadf440c
 
-			<script src="popup.js"></script>
+        console.log(_client)
 
-	  </div>
-</html>
+        _client.start();
+
+    }, 2000);
+
+} catch (err) {
+    console.log(err);
+}
